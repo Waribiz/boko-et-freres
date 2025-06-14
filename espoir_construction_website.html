@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espoir Construction Boko & Frères - Construisez la maison de vos rêves</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            margin-right: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: '🏗️';
+            font-size: 20px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f97316;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(59, 130, 246, 0.9)),  url('./img/logo.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #f97316;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-card h3 {
+            color: #1e3a8a;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            color: #64748b;
+        }
+
+        .service-card li {
+            padding: 0.3rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #f97316;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #1e3a8a;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* background: linear-gradient(135deg, rgba(30, 58, 138, 0.3), rgba(249, 115, 22, 0.3)); */
+            z-index: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            /* height: 400px;
+            object-fit: cover; */
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 300px;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.9), rgba(249, 115, 22, 0.8));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            opacity: 0.9;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-overlay p {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 80px 0;
+            background: #f8fafc;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .team-member:hover::before {
+            left: 100%;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .team-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, #1e3a8a, #f97316);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-avatar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+        }
+
+        .team-member h3 {
+            color: #1e3a8a;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #f97316;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .team-description {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #1e3a8a, #3b82f6);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #f97316, #ea580c);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nom{
+                font-size: small;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top: 3px solid #f97316;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+ <nav class="navbar navbar-expand-sm navbar-light ">
+<div class="container">
+                <div class="logo">
+                    <div class="bg-light" style="border-radius: 9999px;">
+                        <img src="./img/logo.png" alt="" style="width: 70px; height: 50px; ">
+                    </div>
+                    <span class="nom mx-3">Espoir Construction<br><small>Boko & Frères</small></span>
+                </div>
+  
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button
+        class="navbar-toggler d-lg-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+    >
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav me-auto mt-2 mt-lg-0 bg-light">
+
+            <li class="nav-item"><a class="nav-link" href="#home">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Réalisations</a></li>
+            <li class="nav-item"><a class="nav-link" href="#team">Équipe</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">À Propos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+           
+        </ul>
+    </div>
+</div>
+</nav>
+
+            </div>
+        </div>
+
+
+
+
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Construisez la maison de vos rêves</h1>
+                <p class="subtitle">Avec Espoir Construction Boko & Frères, votre partenaire de confiance pour tous vos projets de construction et rénovation</p>
+                <a href="#contact" class="cta-button">Demander un devis gratuit</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🏗️ Travaux Publics & Construction</h3>
+                    <ul>
+                        <li>Construction de maisons</li>
+                        <li>Maçonnerie</li>
+                        <li>Plomberie</li>
+                        <li>Électricité</li>
+                        <li>Staff</li>
+                        <li>Étanchéité</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>🏠 Expertise Immobilière</h3>
+                    <ul>
+                        <li>Gestion de biens immobiliers</li>
+                        <li>Appartement, studio meublé</li>
+                        <li>Réservation disponible</li>
+                        <li>Entretien et lavage</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>🎨 Services Complémentaires</h3>
+                    <ul>
+                        <li>Décoration</li>
+                        <li>Transport</li>
+                        <li>Exploitation hôtelière</li>
+                        <li>Location et vente de véhicules</li>
+                        <li>Charpente métallique</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Nos Réalisations</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23e5e7eb' width='400' height='300'/><rect fill='%23f97316' x='50' y='80' width='300' height='140'/><rect fill='%23ffffff' x='80' y='100' width='40' height='40'/><rect fill='%23ffffff' x='140' y='100' width='40' height='40'/><rect fill='%23ffffff' x='200' y='100' width='40' height='40'/><rect fill='%23ffffff' x='260' y='100' width='40' height='40'/><rect fill='%23ffffff' x='80' y='160' width='40' height='40'/><rect fill='%23ffffff' x='140' y='160' width='40' height='40'/><rect fill='%23ffffff' x='200' y='160' width='40' height='40'/><rect fill='%23ffffff' x='260' y='160' width='40' height='40'/><path fill='%231e3a8a' d='M50 80 L200 20 L350 80 Z'/><rect fill='%2334d399' x='0' y='220' width='400' height='80'/></svg>" alt="Villa moderne">
+                    <div class="portfolio-overlay">
+                        <h3>Villa Moderne - Cocody</h3>
+                        <p>Construction complète d'une villa de standing avec piscine. Projet réalisé en 8 mois avec finitions haut de gamme.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ddd6fe' width='400' height='300'/><rect fill='%23a78bfa' x='30' y='60' width='120' height='180'/><rect fill='%23c084fc' x='170' y='40' width='120' height='200'/><rect fill='%23f97316' x='310' y='70' width='80' height='170'/><rect fill='%23ffffff' x='50' y='80' width='20' height='20'/><rect fill='%23ffffff' x='80' y='80' width='20' height='20'/><rect fill='%23ffffff' x='110' y='80' width='20' height='20'/><rect fill='%23ffffff' x='50' y='110' width='20' height='20'/><rect fill='%23ffffff' x='80' y='110' width='20' height='20'/><rect fill='%23ffffff' x='110' y='110' width='20' height='20'/><rect fill='%23ffffff' x='190' y='60' width='20' height='20'/><rect fill='%23ffffff' x='220' y='60' width='20' height='20'/><rect fill='%23ffffff' x='250' y='60' width='20' height='20'/><rect fill='%23ffffff' x='190' y='90' width='20' height='20'/><rect fill='%23ffffff' x='220' y='90' width='20' height='20'/><rect fill='%23ffffff' x='250' y='90' width='20' height='20'/><rect fill='%2334d399' x='0' y='240' width='400' height='60'/></svg>" alt="Immeuble résidentiel">
+                    <div class="portfolio-overlay">
+                        <h3>Immeuble Résidentiel - Yopougon</h3>
+                        <p>Construction d'un immeuble de 3 étages avec 12 appartements. Architecture moderne et espaces optimisés.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fef3c7' width='400' height='300'/><rect fill='%23f59e0b' x='40' y='60' width='320' height='120'/><rect fill='%23ffffff' x='60' y='80' width='60' height='80'/><rect fill='%23ffffff' x='140' y='80' width='60' height='80'/><rect fill='%23ffffff' x='220' y='80' width='60' height='80'/><rect fill='%23ffffff' x='300' y='80' width='40' height='80'/><rect fill='%23dc2626' x='160' y='40' width='80' height='40'/><rect fill='%2334d399' x='0' y='180' width='400' height='120'/><circle fill='%23fbbf24' cx='320' cy='80' r='30'/></svg>" alt="Centre commercial">
+                    <div class="portfolio-overlay">
+                        <h3>Centre Commercial - Adjamé</h3>
+                        <p>Rénovation complète d'un centre commercial. Modernisation des façades et amélioration de l'accessibilité.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23ecfdf5' width='400' height='300'/><rect fill='%2310b981' x='50' y='100' width='100' height='100'/><rect fill='%23059669' x='200' y='80' width='100' height='120'/><rect fill='%2306d6a0' x='320' y='120' width='60' height='80'/><rect fill='%23ffffff' x='70' y='120' width='15' height='15'/><rect fill='%23ffffff' x='100' y='120' width='15' height='15'/><rect fill='%23ffffff' x='70' y='150' width='15' height='15'/><rect fill='%23ffffff' x='100' y='150' width='15' height='15'/><rect fill='%23ffffff' x='220' y='100' width='15' height='15'/><rect fill='%23ffffff' x='250' y='100' width='15' height='15'/><rect fill='%23ffffff' x='220' y='130' width='15' height='15'/><rect fill='%23ffffff' x='250' y='130' width='15' height='15'/><rect fill='%23fbbf24' x='0' y='200' width='400' height='100'/></svg>" alt="Écoles">
+                    <div class="portfolio-overlay">
+                        <h3>Groupe Scolaire - Abobo</h3>
+                        <p>Construction d'un complexe scolaire avec 15 salles de classe, laboratoires et espaces récréatifs.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+
+                <div class="portfolio-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fef7ed' width='400' height='300'/><rect fill='%23fb923c' x='80' y='60' width='240' height='120'/><rect fill='%23ea580c' x='100' y='40' width='200' height='40'/><rect fill='%23ffffff' x='120' y='80' width='30' height='30'/><rect fill='%23ffffff' x='170' y='80' width='30' height='30'/><rect fill='%23ffffff' x='220' y='80' width='30' height='30'/><rect fill='%23ffffff' x='270' y='80' width='30' height='30'/><rect fill='%23ffffff' x='120' y='130' width='30' height='30'/><rect fill='%23ffffff' x='170' y='130' width='30' height='30'/><rect fill='%23ffffff' x='220' y='130' width='30' height='30'/><rect fill='%23ffffff' x='270' y='130' width='30' height='30'/><rect fill='%2334d399' x='0' y='180' width='400' height='120'/><rect fill='%23166534' x='150' y='200' width='100' height='80'/></svg>" alt="Hôtel">
+                    <div class="portfolio-overlay">
+                        <h3>Hôtel Résidence - Marcory</h3>
+                        <p>Rénovation et extension d'un hôtel 3 étoiles. 40 chambres modernisées avec espaces communs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title">Notre Équipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="./img/BASILE.png" alt="" style="width: 220px; height: 220px; border-radius: 50%; margin-bottom: 1.5rem;">
+                    <h3>M. Basile BOKO</h3>
+                    <div class="team-role">Directeur Général</div>
+                    <p class="team-description">Fondateur et dirigeant de l'entreprise depuis plus de 15 ans. Expert en gestion de projets de construction et développement immobilier.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Gestion</span>
+                        <span class="skill-tag">Leadership</span>
+                        <span class="skill-tag">Stratégie</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="./img/SEBA.png" alt="" style="width: 220px; height: 220px; border-radius: 50%; margin-bottom: 1.5rem;">
+                    <h3>M. Sebastien BOKO</h3>
+                    <div class="team-role">Directeur des Opérations</div>
+                    <p class="team-description">Co-fondateur et directeur des opérations, supervise l'ensemble des chantiers et coordonne les équipes techniques pour garantir la qualité des réalisations.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Opérations</span>
+                        <span class="skill-tag">Supervision</span>
+                        <span class="skill-tag">Coordination</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="team-avatar">👨‍🔧</div>
+                    <h3>Ing. Kouassi</h3>
+                    <div class="team-role">Ingénieur en Chef</div>
+                    <p class="team-description">Ingénieur civil diplômé avec 12 ans d'expérience. Spécialisé dans la conception et la supervision des grands projets de construction.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Génie Civil</span>
+                        <span class="skill-tag">AutoCAD</span>
+                        <span class="skill-tag">Supervision</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="./img/NDRI.png" alt="" style="width: 220px; height: 220px; border-radius: 50%; margin-bottom: 1.5rem;">
+                    <h3>Mme N'dri Adjoua KOUASSI</h3>
+                    <div class="team-role">Assistante de Direction</div>
+                    <p class="team-description">Assistante expérimentée, elle coordonne l'agenda de la direction, gère les réunions et assure la liaison entre tous les services de l'entreprise.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Organisation</span>
+                        <span class="skill-tag">Coordination</span>
+                        <span class="skill-tag">Communication</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="./img/ALBAN.png" alt="" style="width: 220px; height: 220px; border-radius: 50%; margin-bottom: 1.5rem;">
+                    <h3>M. ALBAN GBESSO</h3>
+                    <div class="team-role">Responsable Commercial</div>
+                    <p class="team-description">Responsable du développement commercial, il gère la prospection, la négociation des contrats et maintient les relations privilégiées avec notre clientèle.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Vente</span>
+                        <span class="skill-tag">Négociation</span>
+                        <span class="skill-tag">Relation Client</span>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <img src="./img/CAROLLE.png" alt="" style="width: 220px; height: 220px; border-radius: 50%; margin-bottom: 1.5rem;">
+                    <h3>Mlle Carolle LOKOSSOU</h3>
+                    <div class="team-role">Commerciale Terrain</div>
+                    <p class="team-description">Commercial terrain expérimenté, elle  assure les visites clients, présente nos services sur site et développe notre réseau de partenaires locaux.</p>
+                    <div class="team-skills">
+                        <span class="skill-tag">Prospection</span>
+                        <span class="skill-tag">Présentation</span>
+                        <span class="skill-tag">Développement</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Pourquoi choisir Espoir Construction ?</h2>
+                    <p>Avec des années d'expérience dans le domaine de la construction, Espoir Construction Boko & Frères s'est imposée comme une référence dans la réalisation de projets de construction et de rénovation de qualité.</p>
+                    <p>Notre équipe de professionnels qualifiés met son expertise au service de vos projets, qu'il s'agisse de construction neuve, de rénovation ou de travaux publics. Nous nous engageons à respecter les délais, le budget et à livrer des travaux de qualité supérieure.</p>
+                    <p>Faites confiance à notre savoir-faire pour concrétiser vos projets les plus ambitieux.</p>
+                </div>
+                <div class="about-image">
+                    <!-- <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect fill='%23e5e7eb' width='400' height='400'/><rect fill='%23f97316' x='50' y='100' width='300' height='200'/><rect fill='%23ffffff' x='80' y='130' width='60' height='60'/><rect fill='%23ffffff' x='180' y='130' width='60' height='60'/><rect fill='%23ffffff' x='280' y='130' width='60' height='60'/><rect fill='%23ffffff' x='80' y='210' width='60' height='60'/><rect fill='%23ffffff' x='180' y='210' width='60' height='60'/><rect fill='%23ffffff' x='280' y='210' width='60' height='60'/><path fill='%231e3a8a' d='M50 100 L200 20 L350 100 Z'/></svg>" alt="Espoir Construction - Bâtiment moderne"> -->
+                     <img src="./img/FLYER.jpg" alt=""  width='' height=''>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Contactez-nous</h2>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📞</div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+225 27217361197</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Port-Bouët, derrière wharf,<br>aéroport après la SIPIM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">🏗️</div>
+                        <div>
+                            <h4>Zone d'intervention</h4>
+                            <p>Abidjan et environs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Demander un devis</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Téléphone</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service souhaité</label>
+                            <input type="text" id="service" name="service" placeholder="Ex: Construction maison, Rénovation...">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Décrivez votre projet..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer la demande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Espoir Construction Boko & Frères. Tous droits réservés.</p>
+            <p>Votre partenaire de confiance pour tous vos projets de construction</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Merci pour votre demande ! Nous vous contacterons dans les plus brefs délais.');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(30, 58, 138, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards and team members
+        document.querySelectorAll('.service-card, .team-member, .portfolio-item').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./bootstrap.min.js"></script>
+ </body>
+</html>
